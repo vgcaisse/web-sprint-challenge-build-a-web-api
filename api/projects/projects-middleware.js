@@ -17,14 +17,12 @@ const validateID = (req, res, next) => {
 const validateBody = (req, res, next) => {
     const { name, description, completed } = req.body;
 
-    if (!name || !description || !completed == null) {
+    if (!name || !description || completed == null) {
         res.status(400).json({ message: 'Some fields are missing you goof' });
     } else {
         next();
     }
 };
-
-
 
 module.exports = {
     validateID,

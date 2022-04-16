@@ -5,7 +5,7 @@ const validateID = (req, res, next) => {
     Project.get(req.params.id)
         .then(project => {
             if (!project) {
-                res.status(404).json({ message: `could not retrieve with ${req.params.id}` });
+                res.status(404).json({ message: `could not retrieve the project ${req.params.id}` });
             } else {
                 req.project = project;
                 next();

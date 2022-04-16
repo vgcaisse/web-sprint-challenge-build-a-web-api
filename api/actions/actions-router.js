@@ -10,8 +10,31 @@ router.get('/', (req, res) => {
         })
         .catch(err => {
             console.log(err);
-            res.status(500).json('Failed')
+            res.status(500).json('*melee announcer*: Failure!!')
         })
+})
+
+router.get('/:id', (req, res) => {
+  Action.get(req.params.id)
+      .then(action => {
+          if(!action) {
+            res.status(404).json({ message: `what are you 'doing,' haha get it?` })
+          } else {
+            res.status(200).json(action)
+          }
+      })
+      .catch(err => {
+          console.log(err);
+          res.status(500).json('*melee announcer*: Failure!!')
+      })
+})
+
+router.delete('/:id', (req, res, next) => {
+  Action.remove(req.params.id)
+    .then(()=> {
+      res.json()
+    })
+    .catch(next)
 })
 
 router.use((err, req, res, next) => { // eslint-disable-line

@@ -1,5 +1,5 @@
 // add middlewares here related to actions
-// err i couldnt find a reason to add middlwares here
+// err i couldnt find a reason to add middlwares here --> nvm I understand, it was just the same thing as the projects middleware
 const Action = require('./actions-model');
 
 const validateID = (req, res, next) => {

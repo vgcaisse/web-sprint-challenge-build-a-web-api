@@ -19,7 +19,7 @@ router.get('/:id', validateID, (req, res) => {
   Action.get(req.params.id)
     .then(action => {
       if (!action) {
-        res.status(404).json({ message: `what are you 'doing,' haha get it?` })
+        res.status(404).json(action)
       } else {
         res.status(200).json(action)
       }

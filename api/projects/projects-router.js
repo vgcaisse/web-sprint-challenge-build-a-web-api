@@ -16,6 +16,14 @@ router.get('/:id', validateID, (req, res) => {
     res.json(req.project)
 })
 
+router.get('/:id/actions', validateID, (req, res, next) => {
+    Project.getProjectActions(req.params.id)
+        .then(projects => {
+            res.json(projects);
+        })
+        .catch(next)
+});
+
 router.post('/', validateBody, (req, res, next) => {
     Project.insert(req.body)
         .then(project => {
@@ -33,8 +41,8 @@ router.put('/:id', validateID, validateBody, (req, res, next) => {
 });
 
 router.delete('/:id', validateID, (req, res, next) => {
-    Project.remove(req.params.id) 
-        .then(()=> {
+    Project.remove(req.params.id)
+        .then(() => {
             res.json()
         })
         .catch(next)
